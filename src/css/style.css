@@ -1,0 +1,141 @@
+:root {
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-duration: 250ms;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+.search-container {
+  position: fixed;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;  
+  background-color: #3f57b3; 
+}
+
+.search-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-form input {
+  width: 20%;
+  border-radius: 4px 0 0 4px;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  padding: 8px 10px;
+  font: inherit;
+}
+
+.search-form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4em;
+  border: none;
+  background-color: rgb(200, 200, 200);
+
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.search-form button:hover,
+.search-form button:focus {
+  background-color: rgb(180, 180, 180);
+  transition: all 0.3s;
+}
+
+
+.gallery__link {
+  margin-top: 20px;
+  margin-left: 20px;
+  min-width: 260px;
+  flex-basis: calc((100% - 80px) / 4);
+  border: 2px solid rgb(241, 238, 238);  
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.gallery__link:hover {
+  cursor: zoom-in;
+}
+
+.info {
+  font-size: 12;
+  padding: 10px;
+  justify-content: space-around;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+
+.info-item:not(:first-child) {
+  margin-left: 5px;
+}
+
+.load-more.is-hidden {
+  display: none;
+}
+
+
+.info {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gallery {
+  display: grid;
+  max-width: 1140px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-auto-rows: 260px;
+  grid-gap: 12px;
+  justify-content: center;
+  padding-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gallery__item {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.gallery__image:hover {
+  transform: scale(1.03);
+}
+
+.gallery__image {
+  display: block;
+  height: 190px;  
+  object-fit: cover;
+  
+}
+
+.load-more {
+display: block;
+margin: 25px auto 0 auto;
+padding: 8px 20px;
+border: none;
+border-radius: 5px;
+background-color: #3f57b3;
+box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+font: inherit;
+color: white;
+cursor: pointer;
+}
+
+

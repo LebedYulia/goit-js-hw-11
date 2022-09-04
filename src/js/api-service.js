@@ -1,17 +1,16 @@
 import axios from "axios";
-
+const baseURL = 'https://pixabay.com/api/';
+const KEY = '29641497-e95f803aba10936f30ac1e55f';
 
 export class ApiService 
    {constructor() {
-        this.searchQuery = "";
-        this.baseURL = 'https://pixabay.com/api/';
-        this.key = '29641497-e95f803aba10936f30ac1e55f';
+        this.searchQuery = "";        
         this.page = 1;
         }
 
         getImageByQuery() {
             const params = {
-                key: this.key,
+                key: KEY,
                 q: this.searchQuery,
                 image_type:  "photo",
                 orientation:  "horizontal",
@@ -20,12 +19,12 @@ export class ApiService
                 per_page: 40,  
             }
 
-        return  axios.get(this.baseURL, {params})
+        return  axios.get(baseURL, {params})
                     .then(response => response.data)
-                    .then(data => {
+                    .then(( data ) => {
                         this.page += 1;
-                        console.log(data.hits)
-                        return data.hits});
+                        console.log(data)
+                        return data});
         }
 
         get query() {
