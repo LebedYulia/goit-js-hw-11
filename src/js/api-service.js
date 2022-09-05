@@ -6,9 +6,10 @@ export class ApiService
    {constructor() {
         this.searchQuery = "";        
         this.page = 1;
+        this.per_page = 40;
         }
 
-        getImageByQuery() {
+    async getImageByQuery() {
             const params = {
                 key: KEY,
                 q: this.searchQuery,
@@ -16,15 +17,16 @@ export class ApiService
                 orientation:  "horizontal",
                 safesearch: "true",
                 page: this.page,
-                per_page: 40,  
+                per_page: this.per_page,  
             }
 
-        return  axios.get(baseURL, {params})
-                    .then(response => response.data)
-                    .then(( data ) => {
-                        this.page += 1;
-                        console.log(data)
-                        return data});
+        
+            const response = await axios.get(baseURL, {params});
+            const data = await response.data
+                this.page += 1;
+                console.log(data)
+                return data            
+        
         }
 
         get query() {
