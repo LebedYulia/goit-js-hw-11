@@ -27,8 +27,9 @@ async function onSearch(e) {
         return
       }
 
-    await apiService.getImageByQuery()
-    .then(data =>  {      
+    try {
+        const data = await apiService.getImageByQuery();
+          
          
         if (data.total === 0) {
         Notify.failure("Sorry, there are no images matching your search query. Please try again.");                 
@@ -43,12 +44,15 @@ async function onSearch(e) {
           }                
         }    
       }
-    )     
-}
+      catch(error) {console.log(error)} 
+  
+    }
+        
+
 
 async function onLoadMore() {
-  await apiService.getImageByQuery()
-  .then(data => {
+  try {
+    const data = await apiService.getImageByQuery();  
 
     const totalPages = Math.ceil(data.total / apiService.per_page) + 1
     console.log(totalPages)
@@ -59,10 +63,11 @@ async function onLoadMore() {
     if (apiService.page === totalPages) {
       console.log(apiService.page)
       refs.loadMoreBtn.classList.add('is-hidden');
-      Notify.info("We're sorry, but you've reached the end of search results.")
-      
+      Notify.info("We're sorry, but you've reached the end of search results.")      
     } 
-})
+  }
+  catch(error) {console.log(error)} 
+  
 }
 
 
