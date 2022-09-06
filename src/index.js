@@ -31,15 +31,15 @@ async function onSearch(e) {
         const data = await apiService.getImageByQuery();
           
          
-        if (data.total === 0) {
+        if (data.totalHits === 0) {
         Notify.failure("Sorry, there are no images matching your search query. Please try again.");                 
             
         } else {               
           refs.galleryContainer.insertAdjacentHTML('beforeend', renderCards(data.hits)); 
-          Notify.success(`Hooray! We found ${data.total} images.`) 
+          Notify.success(`Hooray! We found ${data.totalHits} images.`) 
           refs.loadMoreBtn.classList.remove('is-hidden') 
 
-          if (data.hits.length < 40 || data.total < 40) {
+          if (data.hits.length < 40 || data.totalHits < 40) {
             refs.loadMoreBtn.classList.add('is-hidden');           
           }                
         }    
@@ -54,7 +54,7 @@ async function onLoadMore() {
   try {
     const data = await apiService.getImageByQuery();  
 
-    const totalPages = Math.ceil(data.total / apiService.per_page) + 1
+    const totalPages = Math.ceil(data.totalHits / apiService.per_page) + 1
     console.log(totalPages)
     console.log(apiService.page)
 
